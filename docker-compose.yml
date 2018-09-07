@@ -37,5 +37,6 @@ services:
     container_name: php-fpm
     volumes:
       - ./src:/var/www
+      - ./docker/profile:/root:delegated
     links:
       - mysql
