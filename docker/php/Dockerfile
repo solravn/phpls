@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends apt-utils \
 curl \
 wget \
 git \
+vim \
 libfreetype6-dev \
 libjpeg62-turbo-dev \
 libxslt-dev \
@@ -18,6 +19,17 @@ libxml2-dev \
 && docker-php-ext-configure intl && docker-php-ext-install intl \
 && docker-php-ext-install xsl \
 && docker-php-ext-install soap
+
+RUN apt-get update && apt-get install -y --no-install-recommends graphviz \
+    && cd /tmp \
+    && git clone -b badoo-7.0 https://github.com/tony2001/xhprof.git \
+    && cd xhprof/extension/ \
+    && phpize \
+    && ./configure \
+    && make \
+    && make install \
+    && docker-php-ext-enable xhprof \
+    && mv /tmp/xhprof /var/www/xhprof
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug \

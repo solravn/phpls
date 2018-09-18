@@ -38,5 +38,6 @@ services:
     volumes:
       - ./src:/var/www
       - ./docker/profile:/root:delegated
+      - ./docker/php/xdebug/profile:/tmp/xdebug/profile/
     links:
       - mysql
