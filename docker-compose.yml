@@ -3,7 +3,6 @@ version: '3.7'
 services:
   nginx:
     image: nginx:latest
-    container_name: nginx
 
     ports:
       - "80:80"
@@ -30,7 +29,6 @@ services:
 
   php:
     build: docker/php
-    container_name: php-fpm
     volumes:
       - ./src:/var/www
       - ./docker/profile:/root:delegated
