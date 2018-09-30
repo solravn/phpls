@@ -11,14 +11,10 @@ services:
     volumes:
       - ./docker/nginx/core:/etc/nginx/conf.d
       - ./src:/var/www/
-      - ./docker/nginx/logs:/var/log/nginx/
+      - ./docker/log/nginx:/var/log/nginx/
       - ./docker/nginx/html:/usr/share/nginx/html/
     links:
       - php
-    networks:
-      default:
-        aliases:
-          - test.dev
 
   mysql:
     image: percona:latest
