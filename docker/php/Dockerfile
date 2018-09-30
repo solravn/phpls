@@ -2,6 +2,8 @@ FROM php:7.2-fpm
 
 MAINTAINER grizmar <grizmar5@gmail.com>
 
+RUN usermod -u 1000 www-data
+
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils \
 curl \
 wget \
@@ -18,7 +20,7 @@ libxml2-dev \
 && docker-php-ext-install -j$(nproc) gd \
 && docker-php-ext-configure intl && docker-php-ext-install intl \
 && docker-php-ext-install xsl \
-&& docker-php-ext-install soap
+&& docker-php-ext-install zip
 
 RUN apt-get update && apt-get install -y --no-install-recommends graphviz \
     && cd /tmp \
