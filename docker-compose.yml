@@ -30,6 +30,7 @@ services:
     build: docker/config/php
     volumes:
       - ./src:/var/www/oxana
+      - ./xhprof:/var/www/xhprof:delegated
       - ./docker/log/php:/var/log/php/
       - ./docker/dist/profile:/root:delegated
       - ./docker/config/profile/.bashrc:/root/.bashrc
