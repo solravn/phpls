@@ -31,6 +31,7 @@ services:
     build: docker/php
     volumes:
       - ./src:/var/www
+      - ./xhprof:/var/www/xhprof:delegated
       - ./docker/log/php:/var/log/php/
       - ./docker/profile:/root:delegated
       - ./docker/php/xdebug/profile:/tmp/xdebug/profile/
