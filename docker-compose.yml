@@ -8,10 +8,9 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./docker/nginx/core:/etc/nginx/conf.d
-      - ./src:/var/www/
+      - ./docker/config/nginx/conf.d:/etc/nginx/conf.d
+      - ./src:/var/www/oxana
       - ./docker/log/nginx:/var/log/nginx/
-      - ./docker/nginx/html:/usr/share/nginx/html/
     links:
       - php
 
@@ -25,14 +24,15 @@ services:
       - "MYSQL_USER=oxana"
       - "MYSQL_PASSWORD=123456"
     volumes:
-      - "./docker/mysql:/var/lib/mysql:delegated"
+      - "./docker/dist/mysql:/var/lib/mysql:delegated"
 
   php:
-    build: docker/php
+    build: docker/config/php
     volumes:
-      - ./src:/var/www
+      - ./src:/var/www/oxana
       - ./docker/log/php:/var/log/php/
-      - ./docker/profile:/root:delegated
-      - ./docker/php/xdebug/profile:/tmp/xdebug/profile/
+      - ./docker/dist/profile:/root:delegated
+      - ./docker/config/profile/.bashrc:/root/.bashrc
+      - ./docker/dist/php/xdebug/profile:/tmp/xdebug/profile/
     links:
       - mysql
