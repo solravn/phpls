@@ -2,8 +2,7 @@ FROM php:7.2-fpm
 
 MAINTAINER grizmar <grizmar5@gmail.com>
 
-# fix this shit
-RUN usermod -u 1000 www-data
+RUN chown -R www-data:www-data /var/www/*
 
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils \
 curl \
@@ -16,6 +15,8 @@ libxslt-dev \
 libicu-dev \
 libpng-dev \
 libxml2-dev \
+libpq-dev \
+&& docker-php-ext-install -j$(nproc) pdo pgsql pdo_pgsql \
 && docker-php-ext-install -j$(nproc) mysqli pdo_mysql \
 && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
 && docker-php-ext-install -j$(nproc) gd \
