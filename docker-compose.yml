@@ -3,7 +3,6 @@ version: '3.7'
 services:
   nginx:
     image: nginx:latest
-
     ports:
       - "80:80"
       - "443:443"
@@ -26,6 +25,15 @@ services:
     volumes:
       - "./docker/dist/mysql:/var/lib/mysql:delegated"
 
+  postgres:
+    build: docker/config/postgres
+    ports:
+    - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 123
+    logging:
+      driver: none
+
   php:
     build: docker/config/php
     volumes:
@@ -37,3 +45,4 @@ services:
       - ./docker/dist/php/xdebug/profile:/tmp/xdebug/profile/
     links:
       - mysql
+      - postgres
