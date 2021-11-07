@@ -2,47 +2,32 @@ version: '3.7'
 
 services:
   nginx:
-    image: nginx:latest
+    build: etc/docker/nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./docker/config/nginx/conf.d:/etc/nginx/conf.d
-      - ./src:/var/www/oxana
-      - ./docker/log/nginx:/var/log/nginx/
+      - ./etc/docker/nginx/conf.d:/etc/nginx/conf.d
+      - ./:/var/app
+      #- ./var/log/nginx:/var/log/nginx/
     links:
-      - php
-
-  mysql:
-    image: percona:latest
-    ports:
-      - "3309:3306"
-    environment:
-      - "MYSQL_ROOT_PASSWORD=123456"
-      - "MYSQL_DATABASE=oxana"
-      - "MYSQL_USER=oxana"
-      - "MYSQL_PASSWORD=123456"
-    volumes:
-      - "./docker/dist/mysql:/var/lib/mysql:delegated"
+      - app
 
   postgres:
-    build: docker/config/postgres
+    build: etc/docker/postgres
     ports:
     - "5432:5432"
     environment:
       POSTGRES_PASSWORD: 123
-    logging:
-      driver: none
-
-  php:
-    build: docker/config/php
     volumes:
-      - ./src:/var/www/oxana
-      - ./xhprof:/var/www/xhprof:delegated
-      - ./docker/log/php:/var/log/php/
-      - ./docker/dist/profile:/root:delegated
-      - ./docker/config/profile/.bashrc:/root/.bashrc
-      - ./docker/dist/php/xdebug/profile:/tmp/xdebug/profile/
+      - "./var/dist/postgres:/var/lib/postgresql/data"
+
+  app:
+    build: etc/docker/php
+    volumes:
+      - ./:/var/app
+      - ./etc/docker/profile/.bashrc:/root/.bashrc
+      #- ./docker/dist/profile:/root:delegated
+      - ./var/log/php:/var/log/php/
     links:
-      - mysql
       - postgres
