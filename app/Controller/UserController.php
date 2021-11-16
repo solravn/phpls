@@ -1,16 +1,21 @@
 <?php
 
-class UserController
+class UserController extends ControllerPrototype
 {
     // action<actionName>
 
     public function actionIndex()
     {
-        echo 'Im index';
+        $this->render('index');
     }
 
-    public function actionView()
+    public function actionView($id)
     {
-        echo 'Im view';
+        $data = [
+            'user' => 'temka',
+            'email' => 'ololo@mail.ru',
+        ];
+
+        $this->render('view', $data);
     }
 }
