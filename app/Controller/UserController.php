@@ -9,11 +9,14 @@ class UserController extends ControllerPrototype
         $this->render('index');
     }
 
+    public function actionIndex2($id)
+    {
+        $this->render('index2',['KEK'  => 'ti loh',
+                                    'ildar' => 'ne loh']);
+    }
+
     public function actionView($id)
     {
-        $this->render('view', [
-            'user' => 'temka',
-            'email' => 'ololo@mail.ru',
-        ]);
+        $this->render('view', $id);
     }
 }
