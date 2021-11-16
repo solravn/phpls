@@ -11,11 +11,9 @@ class UserController extends ControllerPrototype
 
     public function actionView($id)
     {
-        $data = [
+        $this->render('view', [
             'user' => 'temka',
             'email' => 'ololo@mail.ru',
-        ];
-
-        $this->render('view', $data);
+        ]);
     }
 }
