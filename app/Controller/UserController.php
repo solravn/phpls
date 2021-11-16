@@ -14,8 +14,8 @@ class UserController extends ControllerPrototype
 
     }
 
-    public function actionView($id)
+    public function actionView()
     {
-        $this->render('view', $id);
+        $this->render('view');
     }
 }
