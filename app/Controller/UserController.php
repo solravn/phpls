@@ -4,12 +4,12 @@ class UserController extends ControllerPrototype
 {
     // action<actionName>
 
-    public function actionIndex($params)
+    public function actionIndex($param)
     {
-        if (is_null($params)) {
+        if (is_null($param)) {
             $this->render('index',['id' => 'Неизвестно']);
         } else {
-            $this->render('index',['id' => $params]);
+            $this->render('index',['id' => $param]);
         }
 
     }
