@@ -4,7 +4,11 @@ abstract class ControllerPrototype
 {
     // todo $params
 
-    protected function render($view, $params)
+    // $params = ['name' => 'Artem',
+    //            'surname' => 'Gafurov',
+    //            'age' => 14 ]
+
+    protected function render($view,$params = null)
     {
         $viewFile = $view . '.php';
 
@@ -12,6 +16,12 @@ abstract class ControllerPrototype
 
         $template = $this->renderContent(ROOT_DIR . '/view/template.php');
         $content  = $this->renderContent(ROOT_DIR . "/view/$viewFolderName/" . $viewFile);
+
+        if (!empty($params)) {
+            foreach ($params as $key => $param) {
+                $content = str_replace('#' . strtoupper($key) . '#', $param, $content);
+            }
+        }
 
         echo str_replace("#CONTENT#", $content, $template);
     }
@@ -22,7 +32,7 @@ abstract class ControllerPrototype
 
         if (!file_exists($file))
         {
-            throw new Exception("Pizec $file netu!");
+            throw new Exception("Pizdec $file netu!");
         }
 
         ob_start();

@@ -4,15 +4,9 @@ class UserController extends ControllerPrototype
 {
     // action<actionName>
 
-    public function actionIndex()
+    public function actionIndex($params)
     {
-        $this->render('index');
-    }
-
-    public function actionIndex2($id)
-    {
-        $this->render('index2',['KEK'  => 'ti loh',
-                                    'ildar' => 'ne loh']);
+        $this->render('index',['id' => $params]);
     }
 
     public function actionView($id)
