@@ -4,3 +4,6 @@
 
 2. app/core/ControllerPrototype.php:7
 Сделать прокидывание параметров во вьюху
+
+
+test
