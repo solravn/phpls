@@ -6,7 +6,12 @@ class UserController extends ControllerPrototype
 
     public function actionIndex($params)
     {
-        $this->render('index',['id' => $params]);
+        if (is_null($params)) {
+            $this->render('index',['id' => 'Неизвестно']);
+        } else {
+            $this->render('index',['id' => $params]);
+        }
+
     }
 
     public function actionView($id)
