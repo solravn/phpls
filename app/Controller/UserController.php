@@ -9,7 +9,7 @@ class UserController extends ControllerPrototype
         $this->render('index');
     }
 
-    public function actionView($id)
+    public function actionView()
     {
         $this->render('view', [
             'user' => 'temka',

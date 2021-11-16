@@ -4,19 +4,19 @@ abstract class ControllerPrototype
 {
     // todo $params
 
-    protected function render($view, $params)
+    protected function render($view, $params = [])
     {
         $viewFile = $view . '.php';
 
         $viewFolderName = lcfirst(str_replace('Controller', '', static::class));
 
-        $template = $this->renderContent(ROOT_DIR . '/view/template.php');
-        $content  = $this->renderContent(ROOT_DIR . "/view/$viewFolderName/" . $viewFile);
+        $template = $this->renderContent(ROOT_DIR . '/view/template.php', $params);
+        $content  = $this->renderContent(ROOT_DIR . "/view/$viewFolderName/" . $viewFile, $params);
 
         echo str_replace("#CONTENT#", $content, $template);
     }
 
-    private function renderContent($file)
+    private function renderContent($file, $params)
     {
         // todo normalno deli
 
