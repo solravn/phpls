@@ -19,6 +19,7 @@
     }
 
     footer {
+        background-color: pink;
         background-image: url("/img/gachiface.png");
         background-size: contain;
         background-position: left;
@@ -68,7 +69,7 @@
                 </div>
         </main>
 
-        <footer class="footer py-3 bg-light">
+        <footer class="footer py-3">
             <div class="container">
                 <span>Футер</span>
             </div>
