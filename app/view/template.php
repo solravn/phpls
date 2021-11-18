@@ -11,6 +11,10 @@
 </head>
 
 <style>
+    header > nav {
+        background-color: pink;
+    }
+
     main {
         background-image: url("/img/gachi-bg.png");
         background-repeat: no-repeat;
@@ -19,27 +23,23 @@
     }
 
     footer {
-        background-color: pink;
-        background-image: url("/img/gachiface.png");
-        background-size: contain;
-        background-position: left;
-        background-repeat: no-repeat;
-    }
-
-    header > nav {
-        background: linear-gradient(180deg, #FE0000 16.66%,
+        background: url("/img/gachiface.png"),linear-gradient(180deg, #FE0000 16.66%,
                                             #FD8C00 16.66%, 33.32%,
                                             #FFE500 33.32%, 49.98%,
                                             #119F0B 49.98%, 66.64%,
                                             #0644B3 66.64%, 83.3%,
                                             #C22EDC 83.3%);
+        background-size: contain;
+        background-position: left;
+        background-repeat: no-repeat;
+
     }
 
 </style>
         <body class="d-flex flex-column h-100">
 
         <header>
-            <nav class="navbar navbar-expand-md navbar-light fixed-top bg-danger">
+            <nav class="navbar navbar-expand-md navbar-light fixed-top ">
                 <div class="container-fluid">
                     <a class="navbar-brand h1" href="/">GayBar</a>
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
