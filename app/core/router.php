@@ -37,9 +37,14 @@ if (file_exists($controllerFile))
 
     if (method_exists($controller, $actionMethod))
     {
-        // todo here
+        unset($uriParts[0]);
 
-        $controller->{$actionMethod}();
+        if ($uriParts[1] && method_exists($controller, 'action' . $uriParts[1]))
+        {
+            unset($uriParts[1]);
+        }
+
+        $controller->{$actionMethod}(array_values($uriParts));
     }
     else
     {
