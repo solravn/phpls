@@ -23,16 +23,10 @@
     }
 
     footer {
-        background: url("/img/gachiface.png"),linear-gradient(180deg, #FE0000 16.66%,
-                                            #FD8C00 16.66%, 33.32%,
-                                            #FFE500 33.32%, 49.98%,
-                                            #119F0B 49.98%, 66.64%,
-                                            #0644B3 66.64%, 83.3%,
-                                            #C22EDC 83.3%);
+        background: url("/img/gachiface.png"), pink;
         background-size: contain;
         background-position: left;
         background-repeat: no-repeat;
-
     }
 
 </style>
