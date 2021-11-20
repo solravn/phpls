@@ -10,8 +10,8 @@ abstract class ControllerPrototype
 
         $viewFolderName = lcfirst(str_replace('Controller', '', static::class));
 
-        $template = $this->renderContent(ROOT_DIR . '/view/template.php', $params);
-        $content  = $this->renderContent(ROOT_DIR . "/view/$viewFolderName/" . $viewFile, $params);
+        $template = $this->renderContent(APP_DIR . '/view/template.php', $params);
+        $content  = $this->renderContent(APP_DIR . "/view/$viewFolderName/" . $viewFile, $params);
 
         echo str_replace("#CONTENT#", $content, $template);
     }

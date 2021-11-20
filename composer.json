@@ -1,0 +1,12 @@
+{
+    "name": "solravn/phpls",
+    "require": {
+        "twig/twig": "^2.0"
+    },
+    "authors": [
+        {
+            "name": "Ildar Gafurov",
+            "email": "elanthes@gmail.com"
+        }
+    ]
+}
