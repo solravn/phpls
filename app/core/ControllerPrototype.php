@@ -25,6 +25,7 @@ abstract class ControllerPrototype
             throw new Exception("Pizec $file netu!");
         }
 
+        extract($params);
         ob_start();
         require $file;
         $result = ob_get_contents();
