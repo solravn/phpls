@@ -11,7 +11,7 @@ class UserController extends ControllerPrototype
 
     public function actionView()
     {
-        $this->render('view', [
+        $this->renderTwig('view', [
             'user' => 'temka',
             'email' => 'ololo@mail.ru',
         ]);

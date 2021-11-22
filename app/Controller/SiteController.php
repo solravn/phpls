@@ -6,6 +6,6 @@ class SiteController extends ControllerPrototype
 
     public function actionIndex()
     {
-        $this->render('index');
+        $this->renderTwig('index');
     }
 }
