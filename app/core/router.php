@@ -18,6 +18,7 @@ $uriParts = explode('/', substr($requestUri, 1));
 
 $controllerName = $uriParts[0] ?? null;
 $actionName     = $uriParts[1] ?? null;
+$paramVal       = $uriParts[2] ?? null;
 
 $controllerName  = $controllerName ? lcfirst($controllerName) : 'site';
 $controllerClass = ucfirst($controllerName) . 'Controller';
@@ -39,7 +40,7 @@ if (file_exists($controllerFile))
     {
         // todo here
 
-        $controller->{$actionMethod}();
+        $controller->{$actionMethod}($paramVal);
     }
     else
     {

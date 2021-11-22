@@ -5,8 +5,6 @@ use Twig\Loader\FilesystemLoader;
 
 abstract class ControllerPrototype
 {
-    // todo $params
-
     protected function render($view, $params = [])
     {
         $viewFile = $view . '.php';
