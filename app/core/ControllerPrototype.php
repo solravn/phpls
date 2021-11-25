@@ -17,6 +17,7 @@ abstract class ControllerPrototype
     protected function renderTwig($view, $params = [])
     {
         $loader = new FilesystemLoader($this->getControllerViewPath());
+        $loader->addPath(APP_DIR . '/view/', 'template_path');
         $twig   = new Environment($loader);
 
         echo $twig->render($view . '.twig', $params);
