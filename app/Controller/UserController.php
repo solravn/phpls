@@ -1,30 +1,29 @@
 <?php
 
+require_once APP_DIR . '/Model/User.php';
+
 class UserController extends ControllerPrototype
 {
-    // action<actionName>
-
     public function actionIndex()
     {
         $this->render('index');
     }
 
+    // MVC: controller
     public function actionView($id)
     {
-        $conn = new PDO('pgsql:dbname=dev;host=postgres', 'dev', '123');
+        // MVC: model
+        /** @var User $user */
+        $user = User::findById($id);
 
-        $statement = $conn->prepare("SELECT id, email FROM tbl_user WHERE id = :id");
-        $statement->execute(['id' => $id]);
-        $result = $statement->fetch();
-
-        if (empty($result))
+        if (empty($user))
         {
             throw new Exception("User <$id> not found.");
         }
 
+        // MVC: view
         $this->renderTwig('view', [
-            'user' => 'temka',
-            'email' => $result['email'],
+            'user' => $user,
         ]);
     }
 }
