@@ -2,7 +2,9 @@
 
 require_once APP_DIR . '/Model/User.php';
 
-class UserController extends ControllerPrototype
+use App\Core\BaseController;
+
+class UserController extends BaseController
 {
     public function actionIndex()
     {

@@ -1,6 +1,6 @@
 <?php
 
-require_once APP_DIR . '/core/BaseModel.php';
+use App\Core\BaseModel;
 
 class User extends BaseModel
 {

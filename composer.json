@@ -8,5 +8,10 @@
             "name": "Ildar Gafurov",
             "email": "elanthes@gmail.com"
         }
-    ]
+    ],
+    "autoload" : {
+        "psr-4" : {
+          "App\\": "app/"
+        }
+    }
 }

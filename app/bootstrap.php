@@ -10,7 +10,4 @@ function dump($var)
     echo '<pre>' . print_r($var, true) . '</pre>';
 }
 
-// todo replace
-require_once 'core/ControllerPrototype.php';
-
-require_once 'core/router.php';
+require_once 'router.php';

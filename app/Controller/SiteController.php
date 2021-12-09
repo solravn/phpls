@@ -1,6 +1,8 @@
 <?php
 
-class SiteController extends ControllerPrototype
+use App\Core\BaseController;
+
+class SiteController extends BaseController
 {
     // action<$actionName>()
 

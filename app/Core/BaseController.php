@@ -1,9 +1,11 @@
 <?php
 
+namespace App\Core;
+
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
-abstract class ControllerPrototype
+abstract class BaseController
 {
     protected function render($view, $params = [])
     {
