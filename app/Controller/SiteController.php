@@ -2,7 +2,7 @@
 
 class SiteController extends ControllerPrototype
 {
-    // action<actionName>
+    // action<$actionName>()
 
     public function actionIndex()
     {
