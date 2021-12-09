@@ -1,2 +1,2 @@
 
-1. Сделать template (header/footer) в twig
+1. Понять namespace'ы в php
