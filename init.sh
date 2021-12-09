@@ -38,6 +38,7 @@ case ${!OPTIND} in
              rm) docker-compose down -v; exit $? ;;
           shell) $WINPTY docker-compose exec "${CMD_ARG:-app}" bash; exit 0 ;;
        composer) $WINPTY docker-compose exec -T app bash -c "cd /var/app ; composer ${CMD_ARG:-install}"; exit 0 ;;
+       migrations) $WINPTY docker-compose exec -T app bash -c "cd /var/app ; bin/huston ${CMD_ARG:-migrate --all-or-nothing}"; exit 0 ;;
              '') ;;
               *) echo "Invalid command '${!OPTIND}'"; exit 1 ;;
 
