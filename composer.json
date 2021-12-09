@@ -1,7 +1,8 @@
 {
     "name": "solravn/phpls",
     "require": {
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "doctrine/migrations": "^3.3"
     },
     "authors": [
         {
