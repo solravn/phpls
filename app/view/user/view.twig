@@ -1,4 +1,6 @@
-
+{% extends '@template_path/template.twig' %}
+{% block content %}
 <h1>I'm TWIG view of UserController!</h1>
 <h3>User full name: {{ user.fullName() }}</h3>
 <h3>Email: {{ user.email }}</h3>
+{% endblock %}
