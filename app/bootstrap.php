@@ -1,5 +1,9 @@
 <?php
 
+use App\Core\Router;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+
 // константы
 const APP_DIR = __DIR__;
 
@@ -10,4 +14,21 @@ function dump($var)
     echo '<pre>' . print_r($var, true) . '</pre>';
 }
 
-require_once 'router.php';
+//register_shutdown_function(function ()
+//{
+//    $error   = error_get_last();
+//    $message = $error['message'] ?? '';
+//    $file    = $error['file'] ?? '';
+//    $line    = $error['line'] ?? '';
+//
+//    $errorStr = $message . PHP_EOL . $file . ':' . $line;
+//
+//    $loader = new FilesystemLoader(APP_DIR . '/view/');
+//    $loader->addPath(APP_DIR . '/view/', 'template_path');
+//    $twig   = new Environment($loader);
+//
+//    echo $twig->render('error.twig', ['error' => $errorStr]);
+//    exit;
+//});
+
+Router::invoke();

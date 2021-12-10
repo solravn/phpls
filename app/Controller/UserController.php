@@ -1,8 +1,9 @@
 <?php
 
-require_once APP_DIR . '/Model/User.php';
+namespace App\Controller;
 
 use App\Core\BaseController;
+use App\Model\User;
 
 class UserController extends BaseController
 {

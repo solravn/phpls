@@ -25,9 +25,20 @@ abstract class BaseController
         echo $twig->render($view . '.twig', $params);
     }
 
+    protected function renderTwigError($error)
+    {
+        $loader = new FilesystemLoader(APP_DIR . '/view/');
+        $loader->addPath(APP_DIR . '/view/', 'template_path');
+        $twig   = new Environment($loader);
+
+        echo $twig->render('error.twig', ['error' => $error]);
+    }
+
     protected function getControllerViewPath()
     {
-        $viewFolderName = lcfirst(str_replace('Controller', '', static::class));
+        $parts     = explode('\\', static::class);
+        $className = end($parts);
+        $viewFolderName = lcfirst(str_replace('Controller', '', $className));
 
         return APP_DIR . "/view/$viewFolderName/";
     }
