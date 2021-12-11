@@ -16,9 +16,20 @@ class CounterController extends BaseController
     {
         $counter = Counter::findByName($counterName);
 
+        if(empty($counter)) {
+//            $this->render('view',[
+//                'counterName' => 'Такого счетчика нет',
+//                'value'       => 0
+//            ]);
+            $this->renderTwigError('0,Takogo countera net');
+        } else {
+            $this->renderTwig('view',[
+                'counterName' => $counter['name'],
+                'value'       => $counter['value']
+            ]);
+        }
 
-//        $this->renderTwig('view',[
-//            'counterName' => $counterName
-//        ]);
+
+
     }
 }

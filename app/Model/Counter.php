@@ -25,12 +25,6 @@ class Counter extends BaseModel
         $statement->execute(['counterName' => $counterName]);
         $result    = $statement->fetch();
 
-        if(empty($result)){
-            $statement = $conn->prepare("INSERT INTO $table (name,value) VALUES (:counterName,0)");
-            $statement->execute(['counterName' => $counterName]);
-            $result    = $statement->fetch();
-        }
-
-        dump($result);
+        return $result;
     }
 }
