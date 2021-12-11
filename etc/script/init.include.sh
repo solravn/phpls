@@ -46,6 +46,7 @@ function show_help {
   echo "  rm             : Оcановка контейнеров и volumes. (docker-compose down -v)"
   echo "  shell          : Зайти внутрь основного контейнера. (docker-compose exec app bash)"
   echo "  composer       : Запуск композера."
+  echo "  migrations     : Запуск миграций."
   echo ""
   echo "################### ELANTHA ###################"
   echo ""
