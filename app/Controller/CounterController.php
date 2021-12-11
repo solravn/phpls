@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Core\BaseController;
+use App\Model\Counter;
 
 class CounterController extends BaseController
 {
@@ -11,10 +12,13 @@ class CounterController extends BaseController
         $this->renderTwig('index');
     }
 
-    public function actionView($id)
+    public function actionView($counterName)
     {
-        $this->renderTwig('view',[
-            'id' => $id
-        ]);
+        $counter = Counter::findByName($counterName);
+
+
+//        $this->renderTwig('view',[
+//            'counterName' => $counterName
+//        ]);
     }
 }

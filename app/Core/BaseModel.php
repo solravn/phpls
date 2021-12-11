@@ -19,9 +19,14 @@ abstract class BaseModel
         }
     }
 
+    public static function getPdo()
+    {
+        return new PDO('pgsql:dbname=dev;host=postgres', 'dev', '123');
+    }
+
     public static function findById($id)
     {
-        $conn = new PDO('pgsql:dbname=dev;host=postgres', 'dev', '123');
+        $conn = static::getPdo();
 
         $tableName = static::tableName();
 
