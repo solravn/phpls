@@ -28,12 +28,12 @@ class CounterController extends BaseController
 
     public function actionIncrease($counterName)
     {
-        if(empty($counterName)) {
+        if (empty($counterName)) {
             $this->renderTwigError('Укажите название счетчика');
         } else {
             $counter = Counter::increaseCounter($counterName);
 
-            if($counter === false) {
+            if ($counter === false) {
                 $this->renderTwigError('Request failed');
             } else {
                 $this->renderTwig('increase');
