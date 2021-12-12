@@ -26,7 +26,7 @@ class Counter extends BaseModel
         return $statement->fetch();
     }
 
-    public static function increaseCounter($counterName)
+    public static function increaseCounter($counterName): bool
     {
         $conn = BaseModel::getPdo();
         $table = Counter::tableName();
@@ -38,7 +38,6 @@ class Counter extends BaseModel
             $statement = $conn->prepare("INSERT INTO $table VALUES (:counterName,1)");
         }
 
-        $statement->execute(['counterName' => $counterName]);
-        return $statement->fetch();
+        return $statement->execute(['counterName' => $counterName]);
     }
 }
