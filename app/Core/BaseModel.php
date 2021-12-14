@@ -19,20 +19,14 @@ abstract class BaseModel
         }
     }
 
-    public static function getPdo()
-    {
-        return new PDO('pgsql:dbname=dev;host=postgres', 'dev', '123');
-    }
-
     public static function findById($id)
     {
-        $conn = static::getPdo();
-
         $tableName = static::tableName();
 
-        $statement = $conn->prepare("SELECT * FROM $tableName WHERE id = :id");
-        $statement->execute(['id' => $id]);
-        $result = $statement->fetch();
+        $result = Pimp::app()->db->fetchOne(
+            "SELECT * FROM $tableName WHERE id = :id",
+            ['id' => $id]
+        );
 
         if (!empty($result))
         {
