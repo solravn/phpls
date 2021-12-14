@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Core\BaseController;
+use App\Core\Pimp;
 use App\Model\User;
 
 class UserController extends BaseController

@@ -1,6 +1,7 @@
 <?php
 
-use App\Core\Router;
+use App\Core\Pimp;
+use App\Core\Settings;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -31,4 +32,7 @@ function dump($var)
 //    exit;
 //});
 
-Router::invoke();
+$config = require '../config/settings.php';
+$settings = new Settings($config);
+
+Pimp::app()->run($settings);
