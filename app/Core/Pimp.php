@@ -30,6 +30,8 @@ class Pimp
         $dbConfig = $settings->get('database');
         $this->db = new DbConnection($dbConfig);
 
+        session_start();
+
         Router::invoke();
     }
 }

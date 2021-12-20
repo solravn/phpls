@@ -19,7 +19,8 @@ class Router
     {
         $requestUri = $_SERVER['REQUEST_URI'];
 
-        $uriParts = explode('/', substr($requestUri, 1));
+        $requestUrl = explode('?', $requestUri)[0] ?? null;
+        $uriParts = explode('/', substr($requestUrl, 1));
 
         $controllerName = $uriParts[0] ?? null;
         $actionName     = $uriParts[1] ?? null;

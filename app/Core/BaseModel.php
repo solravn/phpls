@@ -2,8 +2,6 @@
 
 namespace App\Core;
 
-use PDO;
-
 abstract class BaseModel
 {
     abstract public static function tableName(): string;

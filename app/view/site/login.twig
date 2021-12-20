@@ -1,0 +1,24 @@
+{% extends '@template_path/template.twig' %}
+{% block content %}
+<h1>Welcome to phpls.loc!</h1>
+
+{% if error %}
+    <h1 style="color: palevioletred">
+        {{ error }}
+    </h1>
+{% endif %}
+
+<form action="/site/login" method="post">
+    <input type="hidden" name="scenario" value="login">
+    <div>
+        Логин
+        <input type="text" name="login">
+    </div>
+    <div>
+        Пароль
+        <input type="password" name="password">
+    </div>
+    <br>
+    <button type="submit">Войти</button>
+</form>
+{% endblock %}
