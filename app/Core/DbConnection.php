@@ -25,7 +25,7 @@ class DbConnection
         $this->pdo = new PDO("pgsql:dbname=$dbName;host=$host", $user, $pass);
     }
 
-    public function fetchOne($sql, array $params = [])
+    public function fetchOne($sql, array $params = []): array
     {
         $statement = $this->pdo->prepare($sql);
         $statement->execute($params);
@@ -33,19 +33,24 @@ class DbConnection
         return $statement->fetch();
     }
 
-    // todo more methods
-
     /**
      * Возвращает все найденные строки
      */
-    public function fetchAll($sql, array $params = [])
+    public function fetchAll($sql, array $params = []): array
     {
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute($params);
+
+        return $statement->fetchAll();
     }
 
     /**
      * Исполняет запрос (UPDATE/INSERT)
      */
-    public function execute($sql, array $params = [])
+    public function execute($sql, array $params = []): bool
     {
+        $statement = $this->pdo->prepare($sql);
+
+        return $statement->execute($params);
     }
 }
