@@ -37,5 +37,21 @@ class User extends BaseModel
 
         return null;
     }
+
+    public static function registrationUser($email, $password)
+    {
+        $result = Pimp::app()->db->execute(
+            "INSERT INTO tbl_user values (default, :email, CURRENT_TIMESTAMP, :password)",
+            ['email'     => $email,
+             'password' => $password]
+        );
+
+        if($result)
+        {
+            return $result;
+        }
+
+        return null;
+    }
 }
 

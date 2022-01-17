@@ -47,5 +47,8 @@ class DbConnection
      */
     public function execute($sql, array $params = [])
     {
+        $statement = $this->pdo->prepare($sql);
+
+        return $statement->execute($params);
     }
 }

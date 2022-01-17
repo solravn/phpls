@@ -60,4 +60,41 @@ class SiteController extends BaseController
             'error' => $error,
         ]);
     }
+
+    public function actionRegistration()
+    {
+        $error = null;
+
+        if( ! empty($_POST))
+        {
+            $email = $_POST['email'] ?? null;
+            $pass  = $_POST['password'] ?? null;
+            $confirmPassword = $_POST['confirmPassword'] ?? null;
+
+            if(($email && $pass && $confirmPassword) == null)
+            {
+                $error = 'Что-то пошло не так.';
+            }
+            elseif ($pass != $confirmPassword)
+            {
+                $error = 'Пароли не совпадают.';
+            }
+            elseif( ! filter_var($email, FILTER_VALIDATE_EMAIL))
+            {
+                $error = "E-mail адрес $email указан неверно.";
+            }
+            else
+            {
+                $reg = User::registrationUser($email,$pass);
+                if($reg == true)
+                {
+                    header('Location: /site/login');
+                }
+            }
+        }
+
+        $this->renderTwig('registration', [
+            'error' => $error,
+        ]);
+    }
 }

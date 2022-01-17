@@ -1,0 +1,29 @@
+{% extends '@template_path/template.twig' %}
+{% block content %}
+<h1>Registration</h1>
+
+<form action="/site/registration" method="post">
+    <input type="hidden" name="scenario" value="login">
+    <div>
+        E-mail
+        <input type="text" name="email">
+    </div>
+    <div>
+        Пароль
+        <input type="password" name="password">
+    </div>
+    <div>
+        Повторите пароль
+        <input type="password" name="confirmPassword">
+    </div>
+    <br>
+
+    {% if error %}
+        <h1 style="color: palevioletred">
+            {{ error }}
+        </h1>
+    {% endif %}
+
+    <button type="submit">Регистрация</button>
+</form>
+{% endblock %}
